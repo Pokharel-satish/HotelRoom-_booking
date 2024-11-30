@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Roomio</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f4f4f4;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background: #333;
+            color: #fff;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        header .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        header .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        header nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        header nav ul li {
+            margin-left: 20px;
+        }
+
+        header nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        main {
+            flex: 1;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .room-update-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .room-update-form label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .room-update-form input,
+        .room-update-form textarea,
+        .room-update-form select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .room-update-form button {
+            background-color: #28a745;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .room-update-form button:hover {
+            background-color: #218838;
+        }
+
+        .room-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .room-card {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 250px;
+            text-align: center;
+        }
+
+        .room-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .room-card h3 {
+            margin-top: 10px;
+            font-size: 1.2rem;
+        }
+
+        .room-card p {
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        .room-card button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .room-card button:hover {
+            background-color: #0056b3;
+        }
+
+        @media (max-width: 768px) {
+            header nav ul {
+                display: block;
+            }
+
+            header nav ul li {
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <img src="image/logo.jpg" alt="Roomio Logo">
+            <p>ROOMIO</p>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#rooms">Rooms</a></li>
+                <li><a href="#booking">Booking</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Admin Panel</h1>
+
+        <!-- Form to update room details -->
+        <section class="room-update-form">
+            <h2>Update Room Details</h2>
+            <form id="roomForm">
+                <label for="roomType">Room Type:</label>
+                <input type="text" id="roomType" name="roomType" placeholder="Enter Room Type" required>
+
+                <label for="roomRate">Room Rate ($):</label>
+                <input type="number" id="roomRate" name="roomRate" placeholder="Enter Room Rate" required>
+
+                <label for="roomDescription">Description:</label>
+                <textarea id="roomDescription" name="roomDescription" placeholder="Enter Room Description" required></textarea>
+
+                <label for="roomImage">Room Image URL:</label>
+                <input type="text" id="roomImage" name="roomImage" placeholder="Enter Image URL" required>
+
+                <button type="submit">Update Room</button>
+            </form>
+        </section>
+
+        <!-- List of rooms to view and manage -->
+        <section class="room-list">
+            <div class="room-card" id="luxuryRoom">
+                <img src="image/luxury4.jpg" alt="Room Image">
+                <h3 id="luxuryRoomTitle">Luxury Suite</h3>
+                <p id="luxuryRoomRate">Rate: $200</p>
+                <button onclick="editRoom('Luxury Suite')">Edit</button>
+            </div>
+
+            <div class="room-card" id="deluxeRoom">
+                <img src="image/deluxe4.jpg" alt="Room Image">
+                <h3 id="deluxeRoomTitle">Deluxe Room</h3>
+                <p id="deluxeRoomRate">Rate: $150</p>
+                <button onclick="editRoom('Deluxe Room')">Edit</button>
+            </div>
+
+            <div class="room-card" id="standardRoom">
+                <img src="image/standard4.jpg" alt="Room Image">
+                <h3 id="standardRoomTitle">Standard Room</h3>
+                <p id="standardRoomRate">Rate: $100</p>
+                <button onclick="editRoom('Standard Room')">Edit</button>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Function to prefill the form for editing a room
+        function editRoom(roomType) {
+            const roomForm = document.getElementById('roomForm');
+
+            // Simulate room data for editing based on room type
+            if (roomType === 'Luxury Suite') {
+                document.getElementById('roomType').value = 'Luxury Suite';
+                document.getElementById('roomRate').value = 200;
+                document.getElementById('roomDescription').value = 'King-sized bed, private balcony, jacuzzi, smart TV';
+                document.getElementById('roomImage').value = 'image/room1.jpg';
+            } else if (roomType === 'Deluxe Room') {
+                document.getElementById('roomType').value = 'Deluxe Room';
+                document.getElementById('roomRate').value = 150;
+                document.getElementById('roomDescription').value = 'Queen-sized bed, sea view, balcony';
+                document.getElementById('roomImage').value = 'image/room2.jpg';
+            } else if (roomType === 'Standard Room') {
+                document.getElementById('roomType').value = 'Standard Room';
+                document.getElementById('roomRate').value = 100;
+                document.getElementById('roomDescription').value = 'Single bed, city view';
+                document.getElementById('roomImage').value = 'image/room3.jpg';
+            }
+        }
+
+        // Handle the form submission for updating room details
+        document.getElementById('roomForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Get the form data
+            const roomType = document.getElementById('roomType').value;
+            const roomRate = document.getElementById('roomRate').value;
+            const roomDescription = document.getElementById('roomDescription').value;
+            const roomImage = document.getElementById('roomImage').value;
+
+            // Update the room card based on the selected room
+            if (roomType === 'Luxury Suite') {
+                document.getElementById('luxuryRoomTitle').innerText = roomType;
+                document.getElementById('luxuryRoomRate').innerText = `Rate: $${roomRate}`;
+                document.getElementById('luxuryRoom').querySelector('img').src = roomImage;
+            } else if (roomType === 'Deluxe Room') {
+                document.getElementById('deluxeRoomTitle').innerText = roomType;
+                document.getElementById('deluxeRoomRate').innerText = `Rate: $${roomRate}`;
+                document.getElementById('deluxeRoom').querySelector('img').src = roomImage;
+            } else if (roomType === 'Standard Room') {
+                document.getElementById('standardRoomTitle').innerText = roomType;
+                document.getElementById('standardRoomRate').innerText = `Rate: $${roomRate}`;
+                document.getElementById('standardRoom').querySelector('img').src = roomImage;
+            }
+
+            alert('Room details updated successfully!');
+        });
+    </script>
+</body>
+
+</html>

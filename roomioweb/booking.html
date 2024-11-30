@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Your Stay</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f7f7f7;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        header {
+            margin-bottom: 20px;
+        }
+
+        header h1 {
+            font-size: 2rem;
+            color: #333;
+            text-align: center;
+        }
+
+        main {
+            width: 100%;
+            max-width: 600px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        label {
+            font-weight: bold;
+            color: #555;
+        }
+
+        input, textarea, button {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        input:focus, textarea:focus {
+            border-color: #007BFF;
+            outline: none;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
+        textarea {
+            resize: none;
+            height: 80px;
+        }
+
+        button {
+            background: #007BFF;
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        #paymentSection {
+            display: none;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+
+            header h1 {
+                font-size: 1.5rem;
+            }
+
+            form {
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Book Your Stay</h1>
+    </header>
+    <main>
+        <section id="bookingSection">
+            <form id="bookingForm">
+                <label for="roomType">Room Type:</label>
+                <input type="text" id="roomType" name="roomType" value="Luxury Suite" readonly>
+
+                <label for="roomRate">Rate per Room:</label>
+                <input type="text" id="roomRate" name="roomRate" value="200" readonly>
+
+                <label for="roomDescription">Description:</label>
+                <textarea id="roomDescription" name="roomDescription" readonly>King-sized bed, private balcony, jacuzzi, smart TV</textarea>
+
+                <label for="numRooms">Number of Rooms:</label>
+                <input type="number" id="numRooms" name="numRooms" min="1" value="1" required>
+
+                <label for="checkInDate">Check-in Date:</label>
+                <input type="date" id="checkInDate" name="checkInDate" required>
+
+                <label for="checkOutDate">Check-out Date:</label>
+                <input type="date" id="checkOutDate" name="checkOutDate" required>
+
+                <button type="button" id="confirmButton" class="btn">Confirm</button>
+            </form>
+        </section>
+
+        <section id="paymentSection">
+            <h2>Payment Page</h2>
+            <form id="paymentForm">
+              <p id="totalCost">Total Cost: $0</p>
+
+
+                <label for="cardNumber">Card Number:</label>
+                <input type="text" id="cardNumber" name="cardNumber" placeholder="9898 9898 9898 9898" required>
+
+                <label for="expiryDate">Expiry Date:</label>
+                <input type="month" id="expiryDate" name="--------" required>
+
+                <label for="cvv">CVV:</label>
+                <input type="text" id="cvv" name="cvv" placeholder="00000" required>
+
+                <label for="nameOnCard">Name on Card:</label>
+                <input type="text" id="nameOnCard" name="nameOnCard" placeholder="Ram nepal" required>
+
+                <button type="button" id="payButton" class="btn">Pay</button>
+            </form>
+        </section>
+    </main>
+
+    <script>
+        const confirmButton = document.getElementById('confirmButton');
+        const bookingSection = document.getElementById('bookingSection');
+        const paymentSection = document.getElementById('paymentSection');
+        const totalCostElement = document.getElementById('totalCost');
+        const payButton = document.getElementById('payButton');
+
+        confirmButton.addEventListener('click', () => {
+    const numRooms = parseInt(document.getElementById('numRooms').value, 10);  // Ensure it's a number
+    let roomRate = document.getElementById('roomRate').value;
+
+    // Remove non-numeric characters like '$' from the roomRate string
+    roomRate = parseFloat(roomRate.replace('$', '').trim());
+
+    if (isNaN(roomRate)) {
+        alert("Invalid room rate.");
+        return;  // Exit if room rate is invalid
+    }
+
+    // Calculate total cost
+    const totalCost = numRooms * roomRate;
+
+    // Update total cost element
+    totalCostElement.textContent = `Total Cost: $${totalCost.toFixed(2)}`;
+
+    // Show payment section
+    bookingSection.style.display = 'none';
+    paymentSection.style.display = 'block';
+});
+
+
+        payButton.addEventListener('click', () => {
+            alert('Booking Confirmed! A confirmation email has been sent to your registered email address.');
+        });
+    </script>
+     <script src="script.js"></script>
+</body>
+</html>

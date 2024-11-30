@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Roomio: 5-Star Room Reservation System">
+    <title>Roomio: 5-Star Room Reservation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="admin.html"> <!-- Wrap the logo text with a link -->
+                    <img src="image/logo.jpg" alt="Roomio Logo">
+                    <p>ROOMIO</p> <!-- When clicked, it will redirect to admin.html -->
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#rooms">Rooms</a></li>
+                <li><a href="#booking">Booking</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="hero-content">
+            <h1>Warm welcome to Roomio</h1>
+            <p>Enjoy with the  highly rated best service around the globe .</p>
+            <a href="#rooms" class="btn">Explore Rooms</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <h2>About Us</h2>
+        <p>Welcome to our luxurious 5-star hotel, where elegance meets comfort. Experience world-class hospitality, premium amenities, and exceptional services tailored to your needs. Enjoy exquisite dining, state-of-the-art facilities, and breathtaking views. Whether for business or leisure, our hotel promises an unforgettable stay, blending modern sophistication with timeless charm to create a truly remarkable experience.</p>
+    </section>
+<!---room bokking -->
+<section id="rooms" class="section">
+    <h2>Our Rooms</h2>
+    <div class="room-container">
+        <!-- Room 1 -->
+        <div class="room-card luxury">
+            <div class="image-slider">
+                <img src="image/luxury1.jpg" class="slider-img" alt="Luxury Suite">
+                <img src="image/luxury2.jpg" class="slider-img" alt="Luxury Suite">
+                <img src="image/luxury3.jpg" class="slider-img" alt="Luxury Suite">
+            </div>
+            <h3>Luxury Suite</h3>
+            <p>Price: $200/night</p>
+            <p>Features: King-sized bed, private balcony, jacuzzi, smart TV</p>
+            <button class="btn book-now" 
+                data-room-type="Luxury Suite" 
+                data-room-rate="200" 
+                data-description="King-sized bed, private balcony, jacuzzi, smart TV">
+                Book Now
+            </button>
+        </div>
+        <!-- Room 2 -->
+        <div class="room-card deluxe">
+            <div class="image-slider">
+                <img src="image/Deluxe1.jpg" class="slider-img" alt="Deluxe Room">
+                <img src="image/deluxe2.jpg" class="slider-img" alt="Deluxe Room">
+                <img src="image/deluxe3.jpg" class="slider-img" alt="Deluxe Room">
+            </div>
+            <h3>Deluxe Room</h3>
+            <p>Price: $150/night</p>
+            <p>Features: Queen-sized bed, garden view, premium latrine</p>
+            <button class="btn book-now" 
+                data-room-type="Deluxe Room" 
+                data-room-rate="150" 
+                data-description="Queen-sized bed, garden view, premium toiletries">
+                Book Now
+            </button>
+        </div>
+        <!-- Room 3 -->
+        <div class="room-card standard">
+            <div class="image-slider">
+                <img src="image/standard1.jpg" class="slider-img" alt="Standard Room">
+                <img src="image/standard2.jpg" class="slider-img" alt="Standard Room">
+                <img src="image/standard3.jpg" class="slider-img" alt="Standard Room">
+            </div>
+            <h3>Standard Room</h3>
+            <p>Price: $100/night</p>
+            <p>Features: Double bed, city view, WiFi</p>
+            <button class="btn book-now" 
+                data-room-type="Standard Room" 
+                data-room-rate="100" 
+                data-description="Double bed, city view, WiFi, flat-screen TV">
+                Book Now
+            </button>
+        </div>
+    </div>
+</section>
+
+ <!-- Booking Section -->
+<section id="booking" class="section">
+    <h2>Book Your Stay</h2>
+    <p>Experience unparalleled luxury and comfort during your stay at Roomio. Select your preferred room, check your dates, and reserve your spot today!</p>
+    <form id="bookingForm">
+        <div class="form-field">
+            <label for="roomType">Choose Your Room:</label>
+            <select id="roomType" required>
+                <option value="luxurySuite">Luxury Suite</option>
+                <option value="deluxeRoom">Deluxe Room</option>
+                <option value="standardRoom">Standard Room</option>
+            </select>
+        </div>
+
+        <div class="form-field">
+            <input type="text" id="name" placeholder="Your Name" required>
+        </div>
+
+        <div class="form-field">
+            <input type="email" id="email" placeholder="Your Email" required>
+        </div>
+
+        <div class="form-field">
+            <label for="checkin">Check-in Date:</label>
+            <input type="date" id="checkin" required>
+        </div>
+
+        <div class="form-field">
+            <label for="checkout">Check-out Date:</label>
+            <input type="date" id="checkout" required>
+        </div>
+
+        <div class="form-field">
+            <button type="submit" class="btn">Reserve Now</button>
+        </div>
+    </form>
+    <p>For special discounts in Christmas, book directly with us! Call us at <strong>+1 (0000) 999999</strong> or email <strong>contact@roomio.com</strong>.</p>
+</section>
+
+
+<!-- Contact Section -->
+<section id="contact" class="section">
+    <h2>Contact Us</h2>
+    <p>We'd love to hear from you! Whether you have a question, need assistance with your reservation, or want to provide feedback, reach out to us.</p>
+    <p>Email: <a href="mailto:contact@roomio.com">contact@roomio.com</a></p>
+    <p>Phone: +1 (0000) 999999</p>
+    
+    <h3>Follow Us:</h3>
+    <p>Stay connected with us for updates and exclusive offers.</p>
+    <ul class="social-media-links">
+        <li><a href="https://facebook.com/roomio" target="_blank">Facebook</a></li>
+        <li><a href="https://twitter.com/roomio" target="_blank">Twitter</a></li>
+        <li><a href="https://instagram.com/roomio" target="_blank">Instagram</a></li>
+    </ul>
+
+    <h3>Our Location:</h3>
+    <p>We are located in the heart of the city. Visit us for a luxurious experience that’s just a step away!</p>
+    <!-- Embed Google Maps -->
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.056031944222!2d144.95605431531845!3d-37.817209179751396!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d5fa61e3957%3A0x5045675218ce1b0!2zMjU3IFN0IFJpY2hhcmRzLCBGb3J0ZXQgUGxpY2UsIFZpY3RvcnksIExWLg!5e0!3m2!1sen!2sau!4v1666243488375!5m2!1sen!2sau" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+</section>
+
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Roomio. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
